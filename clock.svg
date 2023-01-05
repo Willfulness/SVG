@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+   [
+
+<!ENTITY hbut  "650" >
+<!ENTITY htxt  "700" >
+<!ENTITY vtxt  "-90" >
+<!ENTITY curr  "curr.click;curr.activate;" >
+<!ENTITY slowf  "slf.click;slf.activate;" >
+<!ENTITY slowb  "slb.click;slb.activate;" >
+<!ENTITY fzc    "freeze.click;freeze.activate;" >
+<!ENTITY fastf  "ff.click;ff.activate;" >
+<!ENTITY fastb  "fb.click;fb.activate;" >
+<!ENTITY set    "set.click;set.activate;" >
+<!ENTITY reset  "reset.click;reset.activate;" >
+<!ENTITY sfe  "&fzc;&slowb;&fastf;&fastb;&set;&reset;" >
+<!ENTITY sbe  "&fzc;&slowf;&fastf;&fastb;&set;&reset;" >
+<!ENTITY ffe  "&fzc;&slowb;&slowf;&fastb;&set;&reset;" >
+<!ENTITY fbe  "&fzc;&slowb;&slowf;&fastf;&set;&reset;" >
+<!ENTITY time "0;&set;&reset;shand.activate;shand.click;mhand.activate;mhand.click;hhand.activate;hhand.click" >
+   ]
+>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="-510 -510 1020 1020" version="1.1"
+  >
+  <script type="application/x-javascript">
+    <![CDATA[
+    var RingClock = new function()
+    {
+      window.addEventListener("load",init);
+      var frame = 0;
+      
+      function init()
+      {
+        setClock();
+      }
+      
+      function setClock()
+      {
+        var dt = new Date();
+        
+        var hours = dt.getHours() % 12;
+        var min = dt.getMinutes();
+        var sec = dt.getSeconds();
+        node = document.getElementById("hhand");
+        var deg = 30*(hours + min/60);
+        node.setAttribute("transform","rotate("+deg+")");
+        node = document.getElementById("mhand");
+        deg = 6*(min + sec/60);
+        node.setAttribute("transform","rotate("+deg+")");
+        
+        node = document.getElementById("shand");
+        deg = 6*sec;
+        node.setAttribute("transform","rotate("+deg+")");
+//alert("Total Children: "+document.documentElement.childNodes.length);
+      }
+    }();
+  ]]>
+  </script>
+  <style type="text/css">
+    <![CDATA[
+    #hhand {fill:cyan;stroke:purple;}
+    #mhand {fill:lime;stroke:purple;}
+    #shand {fill:magenta;stroke:purple;}
+  ]]>
+  </style>
+  <defs>
+    <path id="z" opacity="0.3"
+     d="M-7.6023,125.77
+      C119.60193212336,146.1302426944 321.97864330881,83.454886782505 459.50964395017,21.23418226249
+      A460,460 0 0 0 459.50964395017,-21.23418226249
+      C321.97864330881,-83.454886782505 119.60193212336,-146.1302426944 -7.6023,-125.77
+      A126,126 0 1 1 -7.602 125.773" />
+    <mask id="maske">
+      <rect x="-535" y="-535" width="1070" height="1070" fill="#fff" />
+      <use xlink:href="#z" fill="#000" />
+    </mask>
+    <radialGradient id="r" >
+      <stop offset="0" stop-opacity="0" />
+      <stop offset=".90" stop-opacity="0" />
+      <stop offset="0.90" stop-color="#e3e3e3" stop-opacity="1" />
+      <stop offset="0.914285" stop-color="#b8b8b8" />
+      <stop offset="0.928571" stop-color="#e3e3e3" />
+      <stop offset="0.942857" stop-color="#b8b8b8" />
+      <stop offset="0.957142" stop-color="#8f8f8f" />
+      <stop offset="0.971428" stop-color="#e3e3e3" />
+      <stop offset=".985714" stop-color="#8f8f8f" />
+    </radialGradient>
+    <line id="li" y1="98" y2="116" stroke="#999" stroke-width="5" />
+    <line id="t" y1="103" y2="116" stroke="#aaa" stroke-width="3" />
+    <g id="m">
+      <use xlink:href="#li" />
+      <use xlink:href="#t" transform="rotate(6)" />
+      <use xlink:href="#t" transform="rotate(12)" />
+      <use xlink:href="#t" transform="rotate(18)" />
+      <use xlink:href="#t" transform="rotate(24)" />
+    </g>
+    <g id="n">
+      <use xlink:href="#m" />
+      <use xlink:href="#m" transform="rotate(30)" />
+      <use xlink:href="#m" transform="rotate(60)" />
+    </g>
+    <radialGradient id="rg1">
+      <stop offset="0%" stop-color="magenta" />
+      <stop offset="100%" stop-color="purple" />
+    </radialGradient>
+    <linearGradient id="lg" x1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="purple" />
+      <stop offset="1" stop-color="magenta"  />
+    </linearGradient>
+    <linearGradient id="lgb" x1="0" x2="1" y2="1" >
+      <stop offset="0" stop-color="magenta" />
+      <stop offset="1" stop-color="purple" />
+    </linearGradient>
+    <linearGradient id="l2" x1="1" x2="0" y1="1" y2="0" >
+      <stop offset="0" stop-color="purple" />
+      <stop offset="1" stop-color="magenta"  />
+    </linearGradient>
+    <g id="button" transform="scale(0.3)" >
+      <circle r="100" fill="url(#lg)" transform="rotate(135)"
+   stroke="url(#lgb)" stroke-width="6"/>
+      <circle r="80" fill="url(#lg)" transform="rotate(315)"
+   stroke="none" />
+    </g>
+  </defs>
+  <rect width="200%" height="200%" x="-100%" y="-100%" fill="#000"  opacity="1" />
+  <circle r="460" fill="#fff" />
+  <g display="inline">
+    <g id="w" stroke="#fff" stroke-width="3" opacity="0.7" >
+      <use xlink:href="#z" transform="rotate(0)" fill="#f00" />
+      <use xlink:href="#z" transform="rotate(15)" fill="#f80" />
+      <use xlink:href="#z" transform="rotate(30)" fill="#ff0" />
+      <use xlink:href="#z" transform="rotate(45)" fill="#8f0" />
+      <use xlink:href="#z" transform="rotate(60)" fill="#0f0" />
+      <use xlink:href="#z" transform="rotate(75)" fill="#0f8" />
+      <use xlink:href="#z" transform="rotate(90)" fill="#0ff" />
+      <use xlink:href="#z" transform="rotate(105)" fill="#08f" />
+      <use xlink:href="#z" transform="rotate(120)" fill="#00f" />
+      <use xlink:href="#z" transform="rotate(135)" fill="#80f" />
+      <use xlink:href="#z" transform="rotate(150)" fill="#f0f" />
+      <use xlink:href="#z" transform="rotate(165)" fill="#f08" />
+    </g>
+    <g mask="url(#maske)">
+      <use xlink:href="#w" transform="rotate(180)" />
+    </g>
+    <g transform="scale(3.9)">
+      <use xlink:href="#n" />
+      <use xlink:href="#n" transform="rotate(90)" />
+      <use xlink:href="#n" transform="rotate(180)" />
+      <use xlink:href="#n" transform="rotate(270)" />
+    </g>
+    <circle r="126" fill="#fff" opacity="1" />
+    <circle r="126" style="fill: url(#rg1); stroke: #ccc; stroke-width: 4px; opacity: 1" />
+    <g id="hhand" opacity="1">
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&fastf;" end="&ffe;"
+    repeatDur="indefinite" dur="72s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; -360"
+    begin="&fastb;" end="&fbe;"
+    repeatDur="indefinite" dur="72s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&slowf;" end="&sfe;"
+    repeatDur="indefinite" dur="720s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; -360"
+    begin="&slowb;" end="&sbe;"
+    repeatDur="indefinite" dur="720s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    repeatDur="indefinite" dur="43200s"
+    begin="&time;" end="&fzc;"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&reset;" end="&fzc;"
+    repeatDur="indefinite" dur="43200s"
+    additive="replace" fill="freeze" />
+      <path d="M15,0 0,-340 -15,0 0,120 z" stroke-width="0.5" />
+    </g>
+    <g id="mhand" opacity="1">
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&fastf;" end="&ffe;"
+    repeatDur="indefinite" dur="6s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; -360"
+    begin="&fastb;" end="&fbe;"
+    repeatDur="indefinite" dur="6s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&slowf;" end="&sfe;"
+    repeatDur="indefinite" dur="60s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; -360"
+    begin="&slowb;" end="&sbe;"
+    repeatDur="indefinite" dur="60s"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    repeatDur="indefinite" dur="3600s"
+    begin="&time;&curr;" end="&fzc;"
+    additive="sum" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&reset;" end="&fzc;"
+    repeatDur="indefinite" dur="3600s"
+    additive="replace" fill="freeze" />
+      <path d="M15,0 0,-400 -15,0 0,120 z" stroke-width="0.5" />
+    </g>
+    <g opacity="1" display="block">
+      <animate attributeName="display"
+    values="none"
+    begin="&slowf;&slowb;&fastb;&fastf;"
+    repeatDur="indefinite"
+    additive="replace" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    repeatDur="indefinite" dur="60s"
+    begin="&time;" end="&fzc;"
+    additive="replace" fill="freeze" />
+      <animate attributeName="display"
+    values="block"
+    begin="&reset;&fzc;&time;"
+    repeatDur="indefinite"
+    additive="replace" fill="freeze" />
+      <animateTransform attributeName="transform"
+    type="rotate" values="0; 360"
+    begin="&reset;" end="&fzc;"
+    repeatDur="indefinite" dur="60s"
+    additive="replace" fill="freeze" />
+      <path id="shand" transform="rotate(0)" d="M15,0 0,-455 -15,0 0,120 z" stroke-width="0.5" onclick="alert('You have clicked the shand.')" />
+    </g>
+    <circle r="8" fill="url(#rg1)" stroke="purple" stroke-width="0.5" />
+    <circle r="510" fill="url(#r)" stroke="none" opacity="1" />
+    <circle r="460" fill="none" stroke="#333" stroke-width="0" />
+  </g>
+  <use xlink:href="#button" y="-300" x="&hbut;" id="curr" onclick="setClock()" />
+  <text x="&htxt;" y="&vtxt;" dy="-200" font-size="30" fill="#fff" onclick="alert('You have clicked the text »current time«')">current time
+    <tspan dy="30" x="&htxt;" font-size="16">(JavaScript; not working)</tspan>
+  </text>
+  <use xlink:href="#button" y="-200" x="&hbut;" id="freeze" />
+  <text x="&htxt;" y="&vtxt;" dy="-100" font-size="30" fill="#fff">freeze</text>
+  <use xlink:href="#button" y="-100" x="&hbut;" id="reset" />
+  <text x="&htxt;" y="&vtxt;" font-size="30" fill="#fff">reset
+    <tspan dy="30" x="&htxt;" font-size="16">(not working for seconds hand)</tspan>
+  </text>
+  <use xlink:href="#button" y="0" x="&hbut;" id="slf" />
+  <text x="&htxt;" y="&vtxt;" dy="100" font-size="30" fill="#fff">slow forward
+  <tspan dy="30" x="&htxt;" font-size="16">(hides seconds hand)</tspan>
+  </text>
+  <use xlink:href="#button" y="100" x="&hbut;" id="ff" />
+  <text x="&htxt;" y="&vtxt;" dy="200" font-size="30" fill="#fff">fast forward<tspan dy="30" x="&htxt;" font-size="16">(hides seconds hand)</tspan></text>
+  <use xlink:href="#button" y="200" x="&hbut;" id="slb" />
+  <text x="&htxt;" y="&vtxt;" dy="300" font-size="30" fill="#fff" >slow backward<tspan dy="30" x="&htxt;" font-size="16">(hides seconds hand)</tspan></text>
+  <use xlink:href="#button" y="300" x="&hbut;" id="fb" />
+  <text x="&htxt;" y="&vtxt;" dy="400" font-size="30" fill="#fff" >fast backward<tspan dy="30" x="&htxt;" font-size="16">(hides seconds hand)</tspan></text>
+  <use xlink:href="#button" y="400" x="&hbut;" id="set" />
+  <text x="&htxt;" y="&vtxt;" dy="500" font-size="30" fill="#fff" >set time</text>
+</svg>
