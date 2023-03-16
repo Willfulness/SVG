@@ -1,0 +1,28 @@
+:root {
+  --color-font-general: #336699;
+
+--foo:#336699; 
+--bar:var(--foo); 
+--baz:calc(2px*2); 
+
+--myVariable : red;
+
+}
+
+
+
+/*div{ background-color: var(--myVariable); }*/
+div{ background-color: var(--JSVar); }
+
+
+--bgColorTDark: hsla(224.42, 43.22%, 21.68%, 1);
+
+--txColor: hsla(42, 51%, 84%, 1);
+
+
+
+:root {
+--bgColor: hsla(212, 53%, 39%, 1);
+}
+
+background: var(--bgColor);
