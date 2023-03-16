@@ -1,0 +1,77 @@
+<script type="text/javascript">
+console.log('Under !DOCTYPE')
+</script>
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+console.log('JS HTML html console log')
+</script>
+<head>
+<script type="text/javascript">
+console.log('JS HTML 1st head console log')
+</script>
+
+<title>All Events</title>
+<link href="VariableCSSJS.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+console.log('JS HTML head console log')
+</script>
+
+</head>
+<body>
+<script type="text/javascript">
+console.log('JS HTML body console log')
+</script>
+
+<link href="VariableCSSJS.css" type="text/css" rel="stylesheet" />
+<script src="VariableCSSJS-003.js"></script>
+
+<script type="text/javascript">
+document.write("Hello World")
+
+var style = getComputedStyle(document.body)
+console.log( style.getPropertyValue('--bar') ) // #336699
+console.log( style.getPropertyValue('--baz') ) // calc(2px*2)
+
+console.log( style.getPropertyValue('--innerWidth') )
+console.log( style.getPropertyValue('--innerWidth2') )
+console.log( style.getPropertyValue('--JSVar') )
+
+
+//let c = getComputedStyle(document.documentElement,null).getPropertyValue('--myVariable')
+let c = getComputedStyle(document.documentElement,null).getPropertyValue('--JSVar')
+//alert('The value of --myVariable is : ' + (c?c:'--myVariable'))
+//console.clear();
+    
+    /**
+     * @param : source := EventTarget
+     *  *   EventTarget.prototype
+     *  *   Node (Element, Attr, etc)
+     * @usage : [Node].addEventListener('*', ({ detail: e }) => {...}, false);
+
+    function proxyEventTargetSource(source) {
+        var emit = source.dispatchEvent;  // obtain reference
+
+        function proxy(event) {
+            var { type } = event, any = new CustomEvent('*', { detail: event });  // use original event as detail
+            if (!{ '*': true }[ type ]) emit.call(this, any);  // only emit "any" if type is not any.type ('*')
+            return emit.call(this, event);
+        }
+
+        source.dispatchEvent = proxy;  // attempt overwrite
+
+        return (source.dispatchEvent === proxy);  // indicate if its set after we try to
+    }
+
+    // proxyEventTargetSource(EventTarget.prototype);  // all targets
+    proxyEventTargetSource(document);  // single target
+    var e = new CustomEvent('any!', { detail: true });
+    document.addEventListener('*', (e) => console.log('type: %s, original: %s, e: %O', e.type, e.detail.type, e), false);
+    document.dispatchEvent(e);
+     */
+</script>
+
+<div>background set by --myVariable</div>
+
+</body>
+</html>
